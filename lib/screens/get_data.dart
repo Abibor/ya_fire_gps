@@ -119,6 +119,11 @@ class _GetData extends State<GetData> {
           height: double.infinity,
           child: FirebaseAnimatedList(
             query: dbRef,
+            sort: (a, b) {
+              return b.value['D']
+                  .toString()
+                  .compareTo(a.value['D'].toString());
+            },
             itemBuilder: (BuildContext context, DataSnapshot snapshot,
                 Animation<double> animation, int index) {
               //Map student = snapshot.value as Map;
